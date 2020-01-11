@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/bootstrap3/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap3/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../js/bootstrap-table/bootstrap-table.css" />
+    <script src="../js/bootstrap-table/bootstrap-table.js"></script>
+    <script src="../js/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <!-- bootstrap上传插件 -->
+    <script src="../js/bootstrap-fileinput/js/fileinput.js"></script>
+    <script src="../js/bootstrap-fileinput/js/locales/zh.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-fileinput/css/fileinput.css">
+</head>
+<body style="background: url(../img/c1.jpg) no-repeat center center fixed; background-size: 100%;">
+<div class="container-fluid" style="margin-top: 200px;opacity:0.75">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    用户注册
+                </div>
+                <div class="panel-body">
+                    <div class="container-fluid">
+                        <form id="form" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="username" class="col-sm-3 control-label">用户名</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="username" name="username">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="userWord" class="col-sm-3 control-label">密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="userWord" name="userword">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="userWord2" class="col-sm-3 control-label">确认密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="userWord2" name="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="userphone" class="col-sm-3 control-label">手机号</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="userphone" name="userphone">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="CheckCode" class="col-sm-3 control-label">验证码</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" id="CheckCode" name="yzm" >
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="button" class="btn btn-large btn-primary btn-block"  id="sendCode" value="获取验证码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <button onclick="toLoginPage()" class="btn btn-large btn-primary btn-block" type="button">登录</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button onclick="register()" class="btn btn-large btn-primary btn-block" type="button">注册</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+</body>
+<script>
+    //注册
+    function register(){
+        if ($("#username").val()==""||$("#username").val()==null) {
+            alert('用户名不能为空');
+            return;
+        }
+        if ($("#userphone").val()==""||$("#userphone").val()==null) {
+            alert('手机号不能为空');
+            return;
+        }
+        if ($("#CheckCode").val()==""||$("#CheckCode").val()==null){
+            alert("验证码不能为空");
+            return;
+        }
+        if ($("#userWord").val()==""||$("#userWord").val()==null) {
+            alert('密码不能为空');
+            return;
+        }
+        var pass = $("#userWord").val()
+        var pass2 = $("#userWord2").val()
+        if (pass != pass2) {
+            alert('两次密码不一样');
+            return;
+        }
+        var form = $("#form").serialize()
+        $.ajax({
+            url:"../ysq/register",
+            type:"PUT",
+            data:form,
+            dataType:"text",
+            success:function (data){
+                alert(data);
+                if(data=="注册成功"){
+                    location.href="../toLogin";
+                }
+                if(data="网络错误,请稍后再试"){
+                    return;
+                }
+            }
+        })
+    }
+
+    //验证码
+    $('#sendCode').on('click', function () {
+        var phone = document.getElementById('userphone').value;
+        if ($("#userphone").val()==""||$("#userphone").val()==null) {
+            alert('手机号不能为空');
+            return;
+        }
+        if(!(/^1[3456789]\d{9}$/.test(phone))){
+            alert("手机号码有误，请正确填写");
+            return;
+        }
+
+        var userphone=$("#userphone").val();
+        if(userphone!=null){
+            $.ajax({
+                url:"../ysq/yanzheng",
+                data:{userphone:userphone},
+                type:"get",
+                success:function(data){
+                    var aa = data.msg;
+                    alert(aa);
+                    if(aa == "发送成功"){
+                        timeOut('#sendCode',60);
+                    }
+                }
+            })
+        }
+    })
+
+    function timeOut(id,times){
+        var sendBtn = $(id);
+        var html = times+'秒后重新发送';
+        sendBtn.addClass('btn-dis');
+        sendBtn.val(html);
+        sendBtn.attr('disabled',true);
+        var timer = setInterval(function(){
+            times--;
+            sendBtn.val(times+'秒后重新发送');
+            if(times==0){
+                clearInterval(timer);
+                sendBtn.val('发送验证码');
+                sendBtn.removeClass('btn-dis');
+                sendBtn.attr('disabled',false);
+                return true;
+            }else{
+                return false;
+            }
+        },1000);
+    }
+
+    //跳转到登录
+    function toLoginPage(){
+
+        location.href="../toLogin";
+    }
+
+
+</script>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/bootstrap3/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap3/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../js/bootstrap-table/bootstrap-table.css" />
+    <script src="../js/bootstrap-table/bootstrap-table.js"></script>
+    <script src="../js/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="../js/bootstrap-bootbox/bootbox.js"></script>
+    <!-- bootstrap上传插件 -->
+    <script src="../js/bootstrap-fileinput/js/fileinput.js"></script>
+    <script src="../js/bootstrap-fileinput/js/locales/zh.js"></script>
+    <link rel="stylesheet" href="../js/bootstrap-fileinput/css/fileinput.css">
+</head>
+<body style="background: url(../img/c1.jpg) no-repeat center center fixed; background-size: 100%;">
+<!-- 登录表单 -->
+<div class="container-fluid" style="margin-top: 200px;opacity:0.75">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    用户登录
+                </div>
+                <div class="panel-body">
+                    <div class="container-fluid">
+                        <form id="loginFrom" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="UserPhone" class="col-sm-3 control-label">账户</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control"  id="UserPhone" name="userphone" placeholder="手机号">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="UserPassword" class="col-sm-3 control-label">密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="UserPassword" name="userword" placeholder="密码">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <button onclick="toRegister()" type="button" class="btn btn-large btn-primary btn-block">注册</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button type="button" class="btn btn-large btn-primary btn-block" onclick="login()">登录</button>
+                                </div>
+                            </div>
+                            <div class="rem-for-agile">
+                                <a href="../tokjdl">快捷登录</a><br>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+
+</body>
+<script>
+    $("#img").click(function(){
+        $(this).prop("src","../img?"+new Date().getTime())
+    })
+
+
+    function login() {
+        //alert(123);
+        $.ajax({
+            url:"../ysq/login",
+            data:{userphone:$("#UserPhone").val(),userword:$("#UserPassword").val()},
+            success:function(data) {
+                //alert("登陆成功");
+                if(data.code != 3){
+                    alert(data.msg);
+                }else if(data.code == 3){
+                    alert(data.msg);
+                    location.href = "../toIndex";
+                }
+            },
+            error:function () {
+                alert("登陆出错了");
+            }
+        })
+    }
+
+
+    //跳转注册页面
+    function toRegister(){
+
+        location.href="../toRegister";
+    }
+
+
+    //快捷登录
+    function tokjdl(){
+
+        location.href="../tokjdl";
+    }
+
+
+
+</script>
+</html>

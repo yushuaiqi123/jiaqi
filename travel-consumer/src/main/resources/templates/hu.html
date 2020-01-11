@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--font-family-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- title of site -->
+    <title>全球签证</title>
+    <script src="../lun/js/jquery1111.min.js" type="text/javascript"></script>
+    <!-- For favicon png -->
+    <link rel="shortcut icon" type="image/icon" href="assets/logo/favicon.png"/>
+    <!--font-awesome.min.css-->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!--linear icon css-->
+    <link rel="stylesheet" href="assets/css/linearicons.css">
+    <!--animate.css-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <!--flaticon.css-->
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <!--slick.css-->
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/slick-theme.css">
+    <!--bootstrap.min.css-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- bootsnav -->
+    <link rel="stylesheet" href="assets/css/bootsnav.css" >
+    <!--style.css-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--responsive.css-->
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body>
+
+<!--   展示   -->
+<div id="divcss5" >
+    <h3>--全球签证，快速高效--</h3>
+
+</div>
+<br><br><br>
+<section id="explore" class="explore">
+    <div class="container">
+        <!--showid位置-->
+        <span id="showId"></span>
+    </div>
+</section>
+<script src="../assets/js/jquery.js"></script>
+<!--modernizr.min.js-->
+<script src="../assets/js/modernizr.min.js"></script>
+<!--bootstrap.min.js-->
+<script src="../assets/js/bootstrap.min.js"></script>
+<!-- bootsnav js -->
+<script src="../assets/js/bootsnav.js"></script>
+<!--feather.min.js-->
+<script  src="../assets/js/feather.min.js"></script>
+<!-- counter js -->
+<script src="../assets/js/jquery.counterup.min.js"></script>
+<script src="../assets/js/waypoints.min.js"></script>
+<!--slick.min.js-->
+<script src="../assets/js/slick.min.js"></script>
+<script src="../assets/js/jquery.easing.min.js"></script>
+<!--Custom JS-->
+<script src="../assets/js/custom.js"></script>
+
+<script>
+
+    function queryMinSu(){
+        $.ajax({
+            type:"get",
+            url:"../ysq/queryVise",
+            success:function(data){
+                var Cartable = "";
+                for (i = 0; i < data.length; i++) {
+                    Cartable +=
+                        '<div class="col-md-4 col-sm-6">'+
+                        '<div class="single-explore-img" style="width: 50;height: 50">'+
+                        //房间图片
+                        '<img src="'+data[i].viseimg+'" alt="explore image">'+
+                        '</div>'+
+                        '<div class="single-explore-txt bg-theme-3" style="text-align: center">'+
+                        //名字
+                        '<a href="#" style="text-align: center">'+data[i].visename+'</a>'+
+                        '</p>'+
+                        '<div class="explore-person">'+
+                        '<div class="row">'+
+                        '<div class="col-sm-2">'+
+
+                        '</div>'+
+                        '<div class="single-explore-txt bg-theme-3" style="text-align: center";>'+
+                        //价格
+                        '<h2 class="explore-price">￥'+data[i].viseprice+'</h2>'+
+                        '</div>'+
+                        '</div>'+
+                        '</div>'+
+                        '</div>'+
+                        '</div>'+
+                        '</div>'
+                }
+                $("#showId").html(Cartable)
+            }
+        });
+    }
+
+   /* <div style="width: 100%; margin-top: 30px;">
+        <div class="catagory catagory_5 clearfix w1200">
+        <img class="img_h" src="" alt="签证">
+        <h2>签证</h2>
+        <span class="main_title_small spanD">全球签证，快速高效</span>
+        </div>
+        <div>
+        <ul class="visabox">
+
+        <li>
+        <a rel="nofollow" href="" target="_black">
+        <img class="lazy imgholder" src=""  style="display: block;">
+        <p class="tit">马来西亚个人旅游签证</p>
+        <p class="pre">¥ 450</p>
+        </a>
+        </li>
+        </ul>
+    </div>
+
+    <div class="clearfix"></div>
+    </div>
+*/
+
+    $(function () {
+        queryMinSu();
+    });
+</script>
+
+</body>
+</html>

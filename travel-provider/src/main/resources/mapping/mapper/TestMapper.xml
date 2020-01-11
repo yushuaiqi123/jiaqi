@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.TravelServerMapper" >
+
+    <!--登录匹配手机号-->
+    <select id="queryUserphone" resultType="com.jk.model.LoginModel">
+        select * from t_login  where userphone = #{userphone}
+    </select>
+    <!--注册查询用户-->
+    <select id="queryName" resultType="com.jk.model.LoginModel">
+        select * from  t_login where username=#{username}
+    </select>
+
+    <!--注册 新增-->
+    <insert id="save" parameterType="com.jk.model.LoginModel">
+        insert into t_login (username,userphone,userword) values (#{username},#{userphone},#{userword})
+    </insert>
+
+    <!--查询展示数据-->
+    <select id="queryList" resultType="com.jk.model.TableModel">
+        select * from t_table
+    </select>
+
+    <!--新增数据-->
+    <insert id="addList" parameterType="com.jk.model.TableModel">
+        insert into t_table (tableimg,tablename,tablejieshao,tableprice) values (#{tableimg},#{tablename},#{tablejieshao},#{tableprice})
+    </insert>
+
+    <!--护照查询-->
+    <select id="queryVise" resultType="com.jk.model.ViseModel">
+        select * from t_vise
+    </select>
+
+
+</mapper>

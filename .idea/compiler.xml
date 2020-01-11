@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="travel-common" />
+        <module name="travel-interface" />
+        <module name="travel-provider" />
+        <module name="travel-eureka" />
+        <module name="travel-consumer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="travel-api" target="1.7" />
+      <module name="travel-comment" target="1.7" />
+      <module name="travelcomment" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="travel-common" options="-parameters" />
+      <module name="travel-consumer" options="-parameters" />
+      <module name="travel-eureka" options="-parameters" />
+      <module name="travel-interface" options="-parameters" />
+      <module name="travel-provider" options="-parameters" />
+    </option>
+  </component>
+</project>
