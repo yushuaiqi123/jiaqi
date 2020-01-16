@@ -68,14 +68,14 @@
 
     function login(){
         $.ajax({
-            url: "../kjdl/sjhLogin",
-            type: "post",
+            url: "../ysq/sjhLogin",
+            type: "get",
             data: $("#kjLogin").serialize(),
             dataType: "text",
             success:function(data){
                 alert(data);
                 if(data=="登录成功"){
-                    location.href="../ysq/toTest";
+                    location.href="../toIndex2";
                 }
             }
         })
@@ -94,9 +94,9 @@
         var userphone=$("#userphone").val();
         if(userphone!=null){
             $.ajax({
-                url:"../kjdl/sendSms",
+                url:"../ysq/sendSms",
                 data:{userphone:userphone},
-                type:"post",
+                type:"get",
                 success:function(data){
                     var aa = data.msg;
                     alert(aa);
