@@ -28,5 +28,10 @@ public interface  TravelServer {
     @GetMapping("queryVise")
     public List<ViseModel> queryVise();
 
+    @GetMapping("login")
+    public String sjhLogin(@RequestParam("userphone") String userphone,@RequestParam("checkCode") String checkCode);
+
+    @GetMapping("send")
+    public Map sendSms(@RequestParam("userphone")String userphone);
 
 }
