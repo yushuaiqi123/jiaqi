@@ -23,5 +23,9 @@ public interface TravelServerService {
 
     List<ViseModel> queryVise();
 
+    String sjhLogin(String userphone, String checkCode);
+
+    Map sendSms(String userphone);
+
 
 }
