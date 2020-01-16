@@ -23,5 +23,9 @@ public interface TravelServerMapper {
 
     List<ViseModel> queryVise();
 
+    LoginModel findUserInfouserPhone(String userphone);
+
+    LoginModel findUserInfoByPhone(String userphone);
+
 
 }
