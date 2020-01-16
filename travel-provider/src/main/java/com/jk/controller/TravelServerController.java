@@ -21,7 +21,6 @@ public class TravelServerController implements TravelServer {
     private TravelServerService travelServerService;
 
 
-
     @GetMapping("query")
     @ResponseBody
     public LoginModel queryUserphone(String userphone) {
@@ -63,6 +62,21 @@ public class TravelServerController implements TravelServer {
     public List<ViseModel> queryVise() {
 
         return travelServerService.queryVise();
+    }
+
+    @GetMapping("login")
+    @ResponseBody
+    public String sjhLogin(String userphone, String checkCode) {
+
+        return travelServerService.sjhLogin(userphone,checkCode);
+    }
+
+
+    @GetMapping("send")
+    @ResponseBody
+    public Map sendSms(String userphone) {
+
+        return travelServerService.sendSms(userphone);
     }
 
 
