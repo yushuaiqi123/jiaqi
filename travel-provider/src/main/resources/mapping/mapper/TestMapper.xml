@@ -31,5 +31,14 @@
         select * from t_vise
     </select>
 
+    <!--手机验证登录-->
+    <select id="findUserInfouserPhone" resultType="com.jk.model.LoginModel">
+        select * from t_login where userphone = #{userphone}
+    </select>
+
+    <select id="findUserInfoByPhone" resultType="com.jk.model.LoginModel">
+        select * from t_login where userphone = #{userphone}
+    </select>
+
 
 </mapper>
