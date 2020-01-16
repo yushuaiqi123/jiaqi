@@ -106,5 +106,33 @@ public class TravelController {
     }
 
 
+    /**
+     * 短信登录验证
+     * @param userphone
+     * @param checkCode
+     * @return
+     */
+    @GetMapping("sjhLogin")
+    @ResponseBody
+    public String sjhLogin(String userphone,String checkCode){
+        System.out.println("这是短信登陆----------------------------");
+        return travelService.sjhLogin(userphone,checkCode);
+    }
+
+    /**
+     * 手机号登录短信发送
+     * @param userphone
+     * @return
+     */
+    @GetMapping("sendSms")
+    @ResponseBody
+    public Map sendSms(String userphone){
+        System.out.println("这是短信发送----------------------------");
+        System.out.println(userphone+"----------------------------------------");
+        return travelService.sendSms(userphone);
+    }
+
+
+
 
 }
