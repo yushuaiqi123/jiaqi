@@ -92,6 +92,11 @@ public class SkipController {
         return "fuwu";
     }
 
+    @RequestMapping("toIndex2")
+    public String toIndex2(){
+
+        return "index2";
+    }
 
 
 
