@@ -21,13 +21,13 @@ public class CommonConf {
 	public static final String WANG_YI_SMS = "https://api.netease.im/sms/sendcode.action";
 
 	//网易app key
-	public static final String WANG_YI_APP_KEY = "321c4a7d10bfa444d31fb9a60d1bdb52";
+	public static final String WANG_YI_APP_KEY = "59ec2138e3ca96ec78c0602c499a68d0";
 
 	//网易App Secret
-	public static final String WANG_YI_APP_SECRET = "89f146ea99ec";
+	public static final String WANG_YI_APP_SECRET = "d28c3a58b7a2";
 
 	//网易短信模板id
-	public static final String WANG_YI_TEMPLATEID = "14834452";
+	public static final String WANG_YI_TEMPLATEID = "14839673";
 
 	//短信验证码缓存key
 	public static final String SSM_CODE_CACHE = "ssmCode";
