@@ -6,10 +6,7 @@ import com.jk.model.ViseModel;
 import com.jk.service.TravelServer;
 import com.jk.service.TravelServerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -78,6 +75,16 @@ public class TravelServerController implements TravelServer {
 
         return travelServerService.sendSms(userphone);
     }
+
+    @PostMapping("updateUser")
+    @ResponseBody
+    public String updateUser(LoginModel lo) {
+
+         return travelServerService.updateUser(lo);
+    }
+
+
+
 
 
 }

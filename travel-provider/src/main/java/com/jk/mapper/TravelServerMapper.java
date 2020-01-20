@@ -27,5 +27,8 @@ public interface TravelServerMapper {
 
     LoginModel findUserInfoByPhone(String userphone);
 
+    String updateUser(LoginModel lo);
+
+
 
 }

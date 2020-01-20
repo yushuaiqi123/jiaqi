@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 
-
 @Repository
 public interface TravelServerService {
 
@@ -26,6 +25,9 @@ public interface TravelServerService {
     String sjhLogin(String userphone, String checkCode);
 
     Map sendSms(String userphone);
+
+    String updateUser(LoginModel lo);
+
 
 
 }

@@ -23,7 +23,7 @@ public interface  TravelServer {
     public List<TableModel> queryList();
 
     @PutMapping("addList")
-    public void addList(TableModel tm);
+    public void addList(@RequestBody TableModel tm);
 
     @GetMapping("queryVise")
     public List<ViseModel> queryVise();
@@ -33,5 +33,10 @@ public interface  TravelServer {
 
     @GetMapping("send")
     public Map sendSms(@RequestParam("userphone")String userphone);
+
+    @PostMapping("updateUser")
+    public String updateUser(@RequestBody LoginModel lo);
+
+
 
 }

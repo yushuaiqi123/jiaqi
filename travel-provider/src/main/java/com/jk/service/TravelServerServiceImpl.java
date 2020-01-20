@@ -216,5 +216,11 @@ public class TravelServerServiceImpl implements TravelServerService{
         }
     }
 
+    @Override
+    public String updateUser(LoginModel lo) {
+
+         return travelServerMapper.updateUser(lo);
+    }
+
 
 }
