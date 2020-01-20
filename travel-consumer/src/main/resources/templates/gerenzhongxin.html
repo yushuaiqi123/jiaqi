@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)http://demo.demohuo.top/modals/31/3189/demo/uc-account.html -->
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>个人信息</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="../geren/iconfont.css" rel="stylesheet">
+    <link href="../geren/common.css" rel="stylesheet">
+    <link href="../geren/uc.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../geren/laydate.css">
+    <!--<link type="text/css" rel="stylesheet" href="../geren/laydate1.css" id="LayDateSkin">-->
+    <link rel="stylesheet" href="../geren/layer.css" id="layui_layer_skinlayercss" style="">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!-- 引入jquery oss上传图片-->
+    <script type="text/javascript" src="../js3/jquery-1.9.1.min.js"></script>
+    <!-- 引入bootstrap的css、js -->
+    <link rel="stylesheet" href="../js3/bootstrap3/css/bootstrap.css">
+    <script type="text/javascript" src="../js3/bootstrap3/js/bootstrap.js"></script>
+    <!-- 引入tree的js、css -->
+    <link rel="stylesheet" href="../js3/bootstrap-treeview/bootstrap-treeview.min.css">
+    <script type="text/javascript" src="../js3/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+    <!-- 引入选项卡的js、css -->
+    <link rel="stylesheet" href="../js3/bootStrap-addTabs/bootstrap.addtabs.css">
+    <script type="text/javascript" src="../js3/bootStrap-addTabs/bootstrap.addtabs.min.js"></script>
+    <!-- 引入table的css、js -->
+    <link rel="stylesheet" href="../js3/bootstrap-table/bootstrap-table.css">
+    <script type="text/javascript" src="../js3/bootstrap-table/bootstrap-table.js"></script>
+    <script type="text/javascript" src="../js3/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <!-- 引入删除提示框 -->
+    <script type="text/javascript" src="../js3/bootbox/bootbox.min.js"></script>
+    <!-- 引入时间的css、js -->
+    <link rel="stylesheet" href="../js3/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+    <script  src="../js3/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script  src="../js3/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <!-- 引入文件上传的css、js -->
+    <link rel="stylesheet" href="../js3/bootstrap-fileinput/css/fileinput.css">
+    <script type="text/javascript" src="../js3/bootstrap-fileinput/js/fileinput.js"></script>
+    <script type="text/javascript" src="../js3/bootstrap-fileinput/js/locales/zh.js"></script>
+    <style type="text/css">
+        .myrow{
+            margin-bottom:10px
+        }
+    </style>
+</head>
+
+<body style="">
+
+
+<!--头部-->
+<div class="topper">
+    <div class="wrapper">
+        <div class="left-bar">
+            <div class="back-home divider">
+                <em></em><a href="../ysq/toIndex2">商城首页</a>
+            </div>
+        </div>
+        <div class="right-bar">
+            <div class="login-user sub-menu">
+               <a class="menu-hd" href=""><p th:text="${m.username}"></p><em></em></a>
+            </div>
+            <div class="logout divider"><a href="../toLogin">退出</a></div>
+            <span class=""></span>
+        </div>
+    </div>
+</div>
+<div class="uc-header-bg">
+    <div class="uc-header wrapper">
+        <a class="logo"><img src="../geren/shangzhan.jpg" style="width: 250px;height: 95px" alt=""></a>
+        <div class="back-home"><a href="../toIndex2">返回商城首页</a></div>
+    </div>
+</div>
+
+<div class="wrapper uc-router">
+    <ul>
+        <li><a href="">首页</a></li>
+        <li><span class="divider"></span></li>
+        <li><span>个人中心</span></li>
+    </ul>
+</div>
+
+<div class="wrapper">
+    <div class="uc-main clearfix">
+        <div class="uc-aside">
+            <div class="uc-menu">
+                <div class="tit" >订单中心</div>
+                <ul class="sublist">
+                    <li><a href="">我的订单</a></li>
+                    <li><a href="">我的收藏</a></li>
+                </ul>
+                <!--<div class="tit">客户服务</div>
+                <ul class="sublist">
+                    <li><a href="">取消订单记录</a></li>
+                    <li><a href="">退款/退货</a></li>
+                </ul>-->
+                <div class="tit">账户中心</div>
+                <ul class="sublist">
+                    <li><a href="">账户信息</a></li>
+                </ul>
+                <div class="tit"></div>
+            </div>
+        </div>
+        <form  id="updateUser">
+        <div class="uc-content">
+            <div class="uc-panel">
+                <div class="uc-bigtit">个人信息</div>
+                <div class="uc-panel-bd">
+                    <div class="account-info clearfix" >
+                        <div class="col-headpic">
+                            <div class="pic-wrap">
+                                <div>
+                                    <label for="headImg">头像</label>
+                                    <img th:src="${m.userimg}" width="100px" height="100px">
+                                    <input type="text" id="testimg" th:value="${m.userimg}" name="userimg" /><br>
+                                    <input type="file" class="projectfile" name="userimg" id="headImg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-userinfo">
+                            <div class="control-group">
+                                <div class="hd">真实姓名：</div>
+                                <div class="bd"><input class="ui-txtin" type="text" name="xname" value="" th:value="${m.xname}"></div>
+                            </div>
+                            <div class="control-group">
+                                <div class="hd">昵称：</div>
+                                <div class="bd"><input class="ui-txtin" type="text" name="username" value="天使溜溜了" th:value="${m.username}"></div>
+                            </div>
+                            <!--<div class="control-group">
+                                <div class="hd">生日：</div>
+                                <div class="bd"><input class="ui-txtin" type="text" name="" id="birthday" ></div>
+                            </div>-->
+                            <div class="control-group">
+                                <div class="hd">性别：</div>
+                                 <div>
+                                   <input type="radio" name="sjsex" value="1" th:checked="${m.sjsex==1}">男&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sjsex" value="2" th:checked="${m.sjsex==2}">女
+                                </div>
+                            </div>
+                            <input type="hidden" name="userid" th:value="${m.userid}">
+                            <div class="control-group">
+                                <div class="hd">电话：</div>
+                                <div class="bd"><input class="ui-txtin" type="text" name="userphone" id="userphone" th:value="${m.userphone}"></div>
+                            </div>
+                            <div class="control-group">
+                                <div class="hd">身份证号：</div>
+                                <div class="bd"><input class="ui-txtin" type="text" name="xidentity" id="xidentity" th:value="${m.xidentity}"></div>
+                            </div>
+                            <div class="control-group">
+                                <div class="hd">地址:</div>
+                                <div class="bd"><input class="ui-txtin" type="text" name="sjaddress" th:value="${m.sjaddress}"></div>
+                            </div>
+                            <center>
+                                <input class="ui-btn-theme submit" type="button" onclick="queren()" value="确认">
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+
+    $(function () {
+        uploadImg();
+    })
+
+    function uploadImg(userimg){
+        $('#headImg').fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: '/ysq/updaloadImg', //上传的地址
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            showUpload: true, //是否显示上传按钮
+            showCaption: false,//是否显示标题
+            browseClass: "btn btn-primary", //按钮样式
+            dropZoneEnabled: false,//是否显示拖拽区域
+            maxFileCount: 2, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount:true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+
+        }).on('fileuploaded', function(event, data, previewId, index) {
+            var imgval = $('#testimg').val();
+            imgval = data.response;//.responseText;
+            $('#testimg').val(imgval);
+        });
+    }
+
+
+    /*function userphone() {
+        var phone = document.getElementById('userphone').value;
+        if (!(/^1[3456789]\d{9}$/.test(phone))) {
+            alert("手机号码有误，请正确填写");
+            return;
+        }
+    }*/
+
+    queren = function(){
+        var userid=$("#updateUser").serialize();
+        $.ajax({
+            url:"../ysq/updateUser",
+            type:"Post",
+            data:userid,
+            success:function(data){
+                if (data) {
+                    bootbox.alert("保存成功");
+                }else{
+                    bootbox.alert("保存失败");
+                }
+            }
+        })
+    }
+
+</script>
+</body>
+</html>
