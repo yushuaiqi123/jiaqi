@@ -1,14 +1,21 @@
 package com.jk.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.jk.model.LoginModel;
 import com.jk.model.TableModel;
 import com.jk.model.ViseModel;
 import com.jk.service.TravelService;
+import com.jk.util.OSSClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import sun.rmi.runtime.Log;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +27,9 @@ public class TravelController {
 
     @Autowired
     private TravelService travelService;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
 
     @GetMapping("login")
@@ -40,7 +50,7 @@ public class TravelController {
                // redisTemplate.opsForValue().set("user_txd",loginUser.getUserId());
                 request.getSession().setAttribute(request.getSession().getId(),loginUser);
                 hm.put("code",3);
-                hm.put("msg","登陆成功");
+                hm.put("msg","登录成功");
             }
         }
         return hm;
@@ -130,6 +140,38 @@ public class TravelController {
         System.out.println("这是短信发送----------------------------");
         System.out.println(userphone+"----------------------------------------");
         return travelService.sendSms(userphone);
+    }
+
+    /**
+     * OSS阿里云上传图片
+     */
+    @RequestMapping("updaloadImg")
+    @ResponseBody
+    public String uploadImg(MultipartFile userimg)throws IOException {
+        if (userimg == null || userimg.getSize() <= 0) {
+            throw new IOException("file不能为空");
+        }
+        OSSClientUtil ossClient=new OSSClientUtil();
+        String name = ossClient.uploadImg2Oss(userimg);
+        String imgUrl = ossClient.getImgUrl(name);
+        String[] split = imgUrl.split("\\?");
+        //System.out.println(split[0]);
+        String s = JSON.toJSONString(split[0]);
+        return s;
+    }
+
+
+
+    /**
+     * 修改个人信息
+     * @param lo
+     */
+    @PostMapping("updateUser")
+    @ResponseBody
+    public String updateUser(LoginModel lo){
+
+        travelService.updateUser(lo);
+        return "1";
     }
 
 
