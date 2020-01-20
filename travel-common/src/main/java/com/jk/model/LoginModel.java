@@ -18,7 +18,7 @@ public class LoginModel {
 
     private String xidentity;
 
-    private String sjsex;
+    private Integer sjsex;
 
     private String sjdate;
 
@@ -106,11 +106,11 @@ public class LoginModel {
         this.xidentity = xidentity;
     }
 
-    public String getSjsex() {
+    public Integer getSjsex() {
         return sjsex;
     }
 
-    public void setSjsex(String sjsex) {
+    public void setSjsex(Integer sjsex) {
         this.sjsex = sjsex;
     }
 
@@ -157,7 +157,7 @@ public class LoginModel {
                 ", userimg='" + userimg + '\'' +
                 ", xname='" + xname + '\'' +
                 ", xidentity='" + xidentity + '\'' +
-                ", sjsex='" + sjsex + '\'' +
+                ", sjsex=" + sjsex +
                 ", sjdate='" + sjdate + '\'' +
                 ", sjaddress='" + sjaddress + '\'' +
                 ", sjwork='" + sjwork + '\'' +
