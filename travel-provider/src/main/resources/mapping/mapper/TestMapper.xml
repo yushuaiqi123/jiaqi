@@ -40,5 +40,11 @@
         select * from t_login where userphone = #{userphone}
     </select>
 
+    <!--修改用户信息-->
+    <update id="updateUser" parameterType="com.jk.model.LoginModel">
+        update t_login set xname=#{xname},sjsex=#{sjsex},username=#{username},sjsex=#{sjsex},userphone=#{userphone},xidentity=#{xidentity},sjaddress=#{sjaddress},userimg=#{userimg} where userid=#{userid}
+    </update>
+
+
 
 </mapper>
